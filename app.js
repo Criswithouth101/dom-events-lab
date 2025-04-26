@@ -8,6 +8,7 @@ const calculator = document.querySelector('#calculator');
 
 let firstNumber = null;
 let secondNumber = null;
+let selectedOperator = null;
 
 function logAButton(event) {
     console.log('calling the function that assigns the number:',
@@ -18,41 +19,50 @@ function logAButton(event) {
     const clickedButton = event.target;
     console.log('you clicked:',clickedButton);
 
-    if (clickedButton.textContent === clickedButton.classList.contains('number')) {
+    if (clickedButton.classList.contains('number')) {
         console.log('this is a number');
-    }
-
-
-    if (firstNumber === null) {
-        firstNumber = parseInt(event.target.textContent);
-        return console.log('this is the first:',firstNumber);
-    }
-    secondNumber = parseInt(event.target.textContent);
-    console.log('this is the second:',secondNumber)
     
+        if (firstNumber === null) {
+            firstNumber = parseInt(event.target.textContent);
+            return console.log('this is the first:',firstNumber);
+        }
+        secondNumber = parseInt(event.target.textContent);
+        console.log('this is the second:',secondNumber)
+    }
+
+    if (clickedButton.classList.contains('operator')) {
+        console.log('this is a operator');
+
+        selectedOperator = event.target.textContent
+            return console.log('operator:',selectedOperator);
+
+    }
 }
 
+function calculateTotal(event) {
+    console.log('calling the function that does the math');
 
-//print in console the click button 
-buttons.forEach((button) => 
-    button.addEventListener('click', logAButton)
-    );
+    if (firstNumber !== null && secondNumber !== null && selectedOperator !== null){
+        console.log('all values selected')
+    } else { console.log('insuficient values')
+    }
+   
+}
+
+equals.addEventListener('click', () =>{
+    calculateTotal();
+})
+
+// mathematical function 
 
 
-calculator.addEventListener('click', (event) => {
-        
-        console.log(event.target.innerText);
-      
-        // Example
-        if (event.target.classList.contains('number')) {
-          // Do something with a number
-        }
-      
-        // Example
-        if (event.target.innerText === '*') {
-          // Do something with this operator
-        }
-      });
+// print the numbers, operators and total 
+
+buttons.forEach((buttons) =>
+    buttons.addEventListener('click', logAButton)
+);
+
+
       
 
 
