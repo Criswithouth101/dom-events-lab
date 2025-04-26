@@ -15,8 +15,13 @@ function logAButton(event) {
     );
 
     console.log(event);
-    const theElement = event.target;
-    console.log(theElement);
+    const clickedButton = event.target;
+    console.log('you clicked:',clickedButton);
+
+    if (clickedButton.textContent === clickedButton.classList.contains('number')) {
+        console.log('this is a number');
+    }
+
 
     if (firstNumber === null) {
         firstNumber = parseInt(event.target.textContent);
