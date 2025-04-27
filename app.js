@@ -1,21 +1,40 @@
 /*-------------------------------- Constants --------------------------------*/
-const buttons = document.querySelectorAll('.button');
-const equals = document.querySelector('.button.equals');
-const numbers = document.querySelectorAll('.button.number');
-const operator = document.querySelectorAll('.button.operator');
-const calculator = document.querySelector('#calculator');
-const display = document.querySelector('.display');
-const clear = document.querySelector('.button.clear');
+
+// ASK: 
+// isn't this the same as the cached element reference below? or maybe the difference is that for some
+// we select all and for others we select only a specific constant like equals, display and clear?
 
 
+
+/*-------------------------------- Variables --------------------------------*/
 
 let firstNumber = null;
 let secondNumber = null;
 let selectedOperator = null;
 let result = null;
 
-// classify buttons 
+/*------------------------ Cached Element References ------------------------*/ 
+const buttons = document.querySelectorAll('.button');
+const equals = document.querySelector('.button.equals');
+const numbers = document.querySelectorAll('.button.number');
+const operator = document.querySelectorAll('.button.operator');
+const display = document.querySelector('.display');
+const clear = document.querySelector('.button.clear');
 
+/*----------------------------- Event Listeners -----------------------------*/
+clear.addEventListener('click', () =>{
+    cleanCalculator();
+            });
+
+    equals.addEventListener('click', () =>{
+        calculateTotal();
+                });
+
+buttons.forEach((buttons) =>
+    buttons.addEventListener('click', logAButton)
+);
+
+/*-------------------------------- Functions --------------------------------*/
 function logAButton(event) {
     console.log('calling the function that assigns type of button:',
         event.target.innerText
@@ -78,6 +97,8 @@ function calculateTotal(event) {
     secondNumber = null;
     selectedOperator = null;  
     };
+
+    // reset all 
     
     function cleanCalculator(event) {
         console.log('cleaning the calculator');
@@ -87,30 +108,3 @@ function calculateTotal(event) {
             result = null;
             display.textContent = 0; 
     }
-
- clear.addEventListener('click', () =>{
-    cleanCalculator();
-            });
-
- // print the numbers, operators and total 
-    equals.addEventListener('click', () =>{
-        calculateTotal();
-                });
-
-buttons.forEach((buttons) =>
-    buttons.addEventListener('click', logAButton)
-);
-
-
-      
-
-
-  
-
-/*-------------------------------- Variables --------------------------------*/
-
-/*------------------------ Cached Element References ------------------------*/
-
-/*----------------------------- Event Listeners -----------------------------*/
-
-/*-------------------------------- Functions --------------------------------*/
