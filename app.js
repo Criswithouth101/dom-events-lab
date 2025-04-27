@@ -32,6 +32,7 @@ function logAButton(event) {
             firstNumber = parseInt(event.target.textContent);
             return console.log('this is the first:',firstNumber);
         }
+        
         secondNumber = parseInt(event.target.textContent);
         console.log('this is the second:',secondNumber)
     }
@@ -43,6 +44,7 @@ function logAButton(event) {
             return console.log('operator:',selectedOperator);
 
     }
+    display.textContent = firstNumber+selectedOperator+secondNumber;
 }
 
 // mathematical function 
