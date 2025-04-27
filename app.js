@@ -4,6 +4,9 @@ const equals = document.querySelector('.button.equals');
 const numbers = document.querySelectorAll('.button.number');
 const operator = document.querySelectorAll('.button.operator');
 const calculator = document.querySelector('#calculator');
+const display = document.querySelector('.display');
+const clear = document.querySelector('.button.clear');
+
 
 
 let firstNumber = null;
@@ -11,8 +14,10 @@ let secondNumber = null;
 let selectedOperator = null;
 let result = null;
 
+// classify buttons 
+
 function logAButton(event) {
-    console.log('calling the function that assigns the number:',
+    console.log('calling the function that assigns type of button:',
         event.target.innerText
     );
 
@@ -61,22 +66,34 @@ function calculateTotal(event) {
         result = firstNumber * secondNumber;
         console.log(result)
                 }
-      if (selectedOperator === '/'){               
+    if (selectedOperator === '/'){               
         result = firstNumber / secondNumber;
         console.log(result)
             }
+    display.textContent = result; // result will be visible in the calculator screen
+
     firstNumber = result;
     secondNumber = null;
     selectedOperator = null;  
     };
     
-    
+    function cleanCalculator(event) {
+        console.log('cleaning the calculator');
+            firstNumber = null;
+            secondNumber = null;
+            selectedOperator = null; 
+            result = null;
+            display.textContent = 0; 
+    }
+
+ clear.addEventListener('click', () =>{
+    cleanCalculator();
+            });
+
+ // print the numbers, operators and total 
     equals.addEventListener('click', () =>{
         calculateTotal();
                 });
-
-
-// print the numbers, operators and total 
 
 buttons.forEach((buttons) =>
     buttons.addEventListener('click', logAButton)
