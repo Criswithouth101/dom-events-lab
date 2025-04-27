@@ -9,6 +9,7 @@ const calculator = document.querySelector('#calculator');
 let firstNumber = null;
 let secondNumber = null;
 let selectedOperator = null;
+let result = null;
 
 function logAButton(event) {
     console.log('calling the function that assigns the number:',
@@ -49,28 +50,30 @@ function calculateTotal(event) {
     } else { console.log('insuficient values')
     }
     if (selectedOperator === '+'){               
-        const sum = firstNumber + secondNumber;
-        console.log(sum)
+        result = firstNumber + secondNumber;
+        console.log(result)
         }
     if (selectedOperator === '-'){               
-            const minus = firstNumber - secondNumber;
-            console.log(minus)
+        result = firstNumber - secondNumber;
+        console.log(result)
             }
     if (selectedOperator === '*'){               
-        const multiply = firstNumber * secondNumber;
-        console.log(multiply)
+        result = firstNumber * secondNumber;
+        console.log(result)
                 }
       if (selectedOperator === '/'){               
-            const divide = firstNumber / secondNumber;
-            console.log(divide)
+        result = firstNumber / secondNumber;
+        console.log(result)
             }
-    }
-
-equals.addEventListener('click', () =>{
-    calculateTotal();
-})
-
-
+    firstNumber = result;
+    secondNumber = null;
+    selectedOperator = null;  
+    };
+    
+    
+    equals.addEventListener('click', () =>{
+        calculateTotal();
+                });
 
 
 // print the numbers, operators and total 
