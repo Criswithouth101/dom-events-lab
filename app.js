@@ -39,6 +39,8 @@ function logAButton(event) {
     }
 }
 
+// mathematical function 
+
 function calculateTotal(event) {
     console.log('calling the function that does the math');
 
@@ -46,14 +48,29 @@ function calculateTotal(event) {
         console.log('all values selected')
     } else { console.log('insuficient values')
     }
-   
-}
+    if (selectedOperator === '+'){               
+        const sum = firstNumber + secondNumber;
+        console.log(sum)
+        }
+    if (selectedOperator === '-'){               
+            const minus = firstNumber - secondNumber;
+            console.log(minus)
+            }
+    if (selectedOperator === '*'){               
+        const multiply = firstNumber * secondNumber;
+        console.log(multiply)
+                }
+      if (selectedOperator === '/'){               
+            const divide = firstNumber / secondNumber;
+            console.log(divide)
+            }
+    }
 
 equals.addEventListener('click', () =>{
     calculateTotal();
 })
 
-// mathematical function 
+
 
 
 // print the numbers, operators and total 
